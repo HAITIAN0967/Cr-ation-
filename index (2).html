@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Créations de Coco - Bracelets Artisanaux</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b9d;
+            --secondary-color: #ffd1dc;
+            --accent-color: #ff4081;
+            --light-color: #fff8f8;
+            --text-color: #4a2a3c;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(255, 107, 157, 0.7), rgba(255, 209, 220, 0.7)), url('https://files.catbox.moe/87sa7z.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            color: var(--white);
+            position: relative;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            background-color: #e91e63;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 3rem 0 2rem;
+            color: var(--primary-color);
+            position: relative;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .products {
+            padding: 3rem 5%;
+            background-color: var(--white);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .product-desc {
+            color: #777;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .order-btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .order-btn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .about {
+            padding: 5rem 10%;
+            background: linear-gradient(45deg, var(--light-color), var(--secondary-color));
+            text-align: center;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .testimonials {
+            padding: 5rem 5%;
+            background-color: var(--white);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--secondary-color);
+            opacity: 0.5;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .author-info h4 {
+            color: var(--primary-color);
+        }
+        
+        .contact {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .phone-numbers {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .phone-number {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .phone-number:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .phone-number i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        footer {
+            background-color: var(--text-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .newsletter {
+            padding: 3rem 5%;
+            background-color: var(--secondary-color);
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto;
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            padding: 0 25px;
+            border-radius: 0 30px 30px 0;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .collection-banner {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            margin: 2rem 0;
+        }
+        
+        .collection-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .collection-banner p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 99;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-fixed:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+        
+        .order-section {
+            background-color: #fff8f8;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+        
+        .order-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            background-color: #128C7E;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .phone-numbers {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem;
+            }
+            
+            .collection-banner h2 {
+                font-size: 2rem;
+            }
+            
+            .whatsapp-fixed {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .order-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-gem"></i>
+                <h1>Les créations de coco</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#produits">Nos bracelets</a></li>
+                <li><a href="#collections">Galerie</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section Hero -->
+    <section class="hero" id="accueil">
+        <h2>Bracelets artisanaux uniques</h2>
+        <p>Créations faites main avec amour pour sublimer votre style au quotidien</p>
+        <a href="#produits" class="btn">Découvrir la collection</a>
+    </section>
+
+    <!-- Section Produits -->
+    <section class="products" id="produits">
+        <h2 class="section-title">Nos bracelets phares</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Cliquez sur "Commander" pour envoyer un message WhatsApp avec votre sélection</p>
+        
+        <div class="product-grid">
+            <!-- Bracelet 1 -->
+            <div class="product-card">
+                <img src="https://files.catbox.moe/39tgyg.jpg" alt="Bracelet Perles Dorées" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Élégance Dorée</h3>
+                    <p class="product-desc">Bracelet en perles dorées avec fermoir argenté, élégant et raffiné</p>
+                    <button class="order-btn" data-name="Élégance Dorée">Commander</button>
+                </div>
+            </div>
+            
+            <!-- Bracelet 2 -->
+            <div class="product-card">
+                <img src="https://files.catbox.moe/cc5sjw.jpg" alt="Bracelet Perles Roses" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Harmonie Rose</h3>
+                    <p class="product-desc">Perles roses et blanches pour un style romantique et délicat</p>
+                    <button class="order-btn" data-name="Harmonie Rose">Commander</button>
+                </div>
+            </div>
+            
+            <!-- Bracelet 3 -->
+            <div class="product-card">
+                <img src="https://files.catbox.moe/t8tkqh.jpg" alt="Bracelet Perles Blanches" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Pureté Blanche</h3>
+                    <p class="product-desc">Perles blanches nacrées pour une élégance intemporelle</p>
+                    <button class="order-btn" data-name="Pureté Blanche">Commander</button>
+                </div>
+            </div>
+            
+            <!-- Bracelet 4 -->
+            <div class="product-card">
+                <img src="https://files.catbox.moe/d9tqr2.jpg" alt="Bracelet Perles Multicolores" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Arc-en-Ciel</h3>
+                    <p class="product-desc">Assortiment de perles colorées pour un style joyeux et estival</p>
+                    <button class="order-btn" data-name="Arc-en-Ciel">Commander</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Collection -->
+    <section class="collection-banner">
+        <h2>Collection Exclusive 2025</h2>
+        <p>Découvrez nos créations uniques faites main avec des matériaux de qualité</p>
+        <a href="#collections" class="btn">Voir toute la collection</a>
+    </section>
+
+    <!-- Galerie -->
+    <section class="gallery" id="collections">
+        <img src="https://files.catbox.moe/87sa7z.jpg" alt="Bracelet Création Coco">
+        <img src="https://files.catbox.moe/t1bk2e.jpg" alt="Bracelet Création Coco">
+        <img src="https://files.catbox.moe/0mchib.jpg" alt="Bracelet Création Coco">
+        <img src="https://files.catbox.moe/8olv2o.jpg" alt="Bracelet Création Coco">
+        <img src="https://files.catbox.moe/usrvk6.jpg" alt="Bracelet Création Coco">
+        <img src="https://files.catbox.moe/1nuend.jpg" alt="Bracelet Création Coco">
+        <img src="https://files.catbox.moe/83qm4c.jpg" alt="Bracelet Création Coco">
+        <img src="https://files.catbox.moe/usrvk6.jpg" alt="Bracelet Création Coco">
+        <img src="https://files.catbox.moe/83qm4c.jpg" alt="Bracelet Création Coco">
+    </section>
+
+    <!-- Section À propos -->
+    <section class="about" id="apropos">
+        <h2 class="section-title">Notre histoire</h2>
+        <div class="about-content">
+            <p>Les Créations de Coco est née de la passion d'une artiste pour les bijoux uniques et personnalisés. Coco, notre créatrice, imagine et réalise chaque pièce avec amour dans son atelier.</p>
+            <p>Nos bracelets 
+                <p>Nos bracelets sont plus que de simples accessoires : ce sont des créations chargées d'émotions, conçues pour vous accompagner dans votre quotidien.</p>
+            <p>Nous sélectionnons rigoureusement chaque matériau pour sa qualité et sa beauté, et nous veillons à un travail artisanal impeccable pour chaque création.</p>
+            <a href="#contact" class="btn">Nous contacter</a>
+        </div>
+    </section>
+
+    <!-- Section Témoignages -->
+    <section class="testimonials">
+        <h2 class="section-title">Témoignages</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">J'ai reçu mon bracelet Élégance Dorée et je suis complètement sous le charme ! La qualité est exceptionnelle et je reçois des compliments chaque fois que je le porte.</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Aïda Diop" class="author-img">
+                    <div class="author-info">
+                        <h4>Aïda Diop</h4>
+                        <p>Dakar</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">Le service client est formidable et le bracelet Harmonie Rose est magnifique. Je le porte tous les jours depuis 3 mois et il est toujours aussi beau !</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Fatou Ndiaye" class="author-img">
+                    <div class="author-info">
+                        <h4>Fatou Ndiaye</h4>
+                        <p>Thiès</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">J'ai offert le bracelet Pureté Blanche à ma sœur pour son anniversaire. Elle l'adore ! La livraison a été rapide et l'emballage très soigné.</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Moussa Fall" class="author-img">
+                    <div class="author-info">
+                        <h4>Moussa Fall</h4>
+                        <p>Saint-Louis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Newsletter -->
+    <section class="newsletter">
+        <h2 class="section-title">Newsletter</h2>
+        <p>Abonnez-vous pour recevoir nos nouveautés et offres exclusives</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Votre adresse email" required>
+            <button type="submit">S'inscrire</button>
+        </form>
+    </section>
+
+    <!-- Section Commandes -->
+    <section class="order-section">
+        <h2 class="section-title">Commandez en 1 clic</h2>
+        <p style="max-width: 700px; margin: 0 auto 1rem;">Cliquez sur le bouton correspondant à votre choix de contact :</p>
+        
+        <div class="order-buttons">
+            <a href="https://wa.me/221777751665?text=Je%20veux%20commander%20un%20bracelet.%20%C3%87a%20co%C3%BBte%20combien%20?" 
+               class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+                Commander via 77 775 16 65
+            </a>
+            
+            <a href="https://wa.me/221784104580?text=Je%20veux%20commander%20un%20bracelet.%20%C3%87a%20co%C3%BBte%20combien%20?" 
+               class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+                Commander via 78 410 45 80
+            </a>
+        </div>
+        
+        <p style="margin-top: 2rem; font-style: italic;">Nous répondons généralement dans les 24 heures</p>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-info">
+            <p>Pour toute question ou commande spéciale, contactez-nous directement :</p>
+            
+            <div class="phone-numbers">
+                <a href="tel:+221777751665" class="phone-number">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+221 77 775 16 65</span>
+                </a>
+                <a href="tel:+221784104580" class="phone-number">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+221 78 410 45 80</span>
+                </a>
+            </div>
+            
+            <div class="phone-numbers">
+                <a href="https://wa.me/221777751665?text=Bonjour,%20j'aimerais%20plus%20d'informations%20sur%20vos%20produits" 
+                   class="phone-number">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp: 77 775 16 65</span>
+                </a>
+                <a href="https://wa.me/221784104580?text=Bonjour,%20j'aimerais%20plus%20d'informations%20sur%20vos%20produits" 
+                   class="phone-number">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp: 78 410 45 80</span>
+                </a>
+            </div>
+            
+            <p>Ouvert du lundi au samedi de 9h à 19h</p>
+            
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bouton WhatsApp fixe -->
+    <a href="https://wa.me/221777751665?text=Je%20veux%20commander%20un%20bracelet.%20%C3%87a%20co%C3%BBte%20combien%20?" 
+       class="whatsapp-fixed" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2023 Les Créations de Coco - Tous droits réservés</p>
+        <p>Bracelets artisanaux faits avec amour au Sénégal</p>
+    </footer>
+
+    <script>
+        // Fonction pour gérer les commandes WhatsApp
+        document.querySelectorAll('.order-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const braceletName = this.getAttribute('data-name');
+                const message = encodeURIComponent(`Je veux un bracelet ${braceletName}. Ça coûte combien ?`);
+                
+                // Numéro WhatsApp principal
+                const phoneNumber = '+221777751665';
+                
+                // Ouvrir WhatsApp avec le message pré-rempli
+                window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+            });
+        });
+        
+        // Animation au défilement
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            // Observer les éléments à animer
+            document.querySelectorAll('.section-title, .product-card, .testimonial-card').forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
